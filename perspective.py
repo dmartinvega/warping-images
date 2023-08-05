@@ -26,8 +26,9 @@ def main():
     # utils.draw_points(image_original, points)
     homography_matrix, image_transformed = perspective_transformation(image_original, rows, cols, points)
     feature_image_original = (550, 277)
-
-    test.transform_feature_coordinate(image_original, image_transformed, feature_image_original, homography_matrix)
+    test.perspective_test(image_original, image_transformed, feature_image_original, homography_matrix)
+    cv2.imwrite("results/perspective-result.png", image_transformed)
+    np.savetxt("results/homography_matrix.csv", homography_matrix, delimiter=",")
 
 
 if __name__ == "__main__":

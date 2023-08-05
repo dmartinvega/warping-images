@@ -26,7 +26,8 @@ def main():
     matrix, image_transformed = affine_transformation(image_original, rows, cols, points)
     feature_image_original = (550, 277)
     test.affine_test(matrix, image_original, image_transformed, feature_image_original)
-    # cv2.imwrite()
+    cv2.imwrite("results/affine-result.png", image_transformed)
+    np.savetxt("results/affine_matrix.csv", matrix, delimiter=",")
 
 
 if __name__ == "__main__":

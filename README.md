@@ -68,6 +68,8 @@ or
 
     python affine.py
 
+The resulting image and matrix will be saved into `results/` folder.
+
 We defined parameters to make the warping. You can adjust those transformation values to suit your needs in the variable `pts2` in `affine.affine_transformation()` and `perspective.perspective_transformation()`.
 
 ## Use cases
