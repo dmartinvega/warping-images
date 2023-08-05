@@ -66,7 +66,7 @@ To run the script:
 
 or 
 
-    python affine.py
+    python perspective.py
 
 The resulting image and matrix will be saved into `results/` folder.
 
