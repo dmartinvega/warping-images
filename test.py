@@ -1,5 +1,11 @@
 import numpy as np
-from utils import plot_two_images, draw_feature_in_image
+import torch
+from PIL import Image
+from torch.nn import functional as F
+
+from fisheye import get_fisheye
+from horizontal_wave import get_horizontal_wave
+from utils import plot_two_images, draw_feature_in_image, get_image_batch, plot
 import cv2
 
 
@@ -29,3 +35,16 @@ def perspective_test(image_original, image_transformed, feature_image_original, 
 
     plot_two_images(f'Original: {feature_image_original}', f'Transformed: {feature_image_transformed}',
                     image_original_with_feature, image_transformed_with_feature)
+
+
+def fisheye_and_horizontal_wave_test():
+    # img = Image.open('checkerboard.png')
+    # img = Image.open('images/grid-original.jpg')
+    img = Image.open('images/COCO_train2014_000000581906.jpg')
+    imgs = get_image_batch(img)
+    N, C, H, W = imgs.shape
+    fisheye_grid = get_fisheye(H, W, torch.tensor([0, 0]), 0.4)
+    hwave_grid = get_horizontal_wave(H, W, 10, 0.1)
+    fisheye_output = F.grid_sample(imgs, fisheye_grid, align_corners=True)
+    hwave_output = F.grid_sample(imgs, hwave_grid, align_corners=True)
+    plot(img, fisheye_output, hwave_output)
