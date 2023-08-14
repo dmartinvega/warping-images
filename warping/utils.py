@@ -7,7 +7,7 @@ from torchvision import transforms as transforms
 
 
 def load_image():
-    image = cv2.imread("images/COCO_train2014_000000581906.jpg")
+    image = cv2.imread("../images/COCO_train2014_000000581906.jpg")
     # image = cv2.imread("images/grid-original.jpg")
     rows, cols, ch = image.shape
     return image, rows, cols

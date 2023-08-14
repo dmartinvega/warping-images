@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import utils
-import test
+from warping import test
 
 
 def perspective_transformation(img, rows, cols, points):

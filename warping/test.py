@@ -40,7 +40,7 @@ def perspective_test(image_original, image_transformed, feature_image_original, 
 def fisheye_and_horizontal_wave_test():
     # img = Image.open('checkerboard.png')
     # img = Image.open('images/grid-original.jpg')
-    img = Image.open('images/COCO_train2014_000000581906.jpg')
+    img = Image.open('../images/COCO_train2014_000000581906.jpg')
     imgs = get_image_batch(img)
     N, C, H, W = imgs.shape
     fisheye_grid = get_fisheye(H, W, torch.tensor([0, 0]), 0.4)
